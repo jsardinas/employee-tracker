@@ -1,0 +1,29 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "CMS for an employee DB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsardinas/employee-tracker.git"
+  },
+  "keywords": [
+    "cms",
+    "mysql",
+    "db",
+    "employee"
+  ],
+  "author": "jsardinas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsardinas/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/jsardinas/employee-tracker#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3"
+  }
+}
