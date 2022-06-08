@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 const query = 'SELECT roles.title as JobTitle, roles.id as ID, department.department_name AS Department FROM roles JOIN department ON roles.department_id = department.id';
 
@@ -19,10 +19,24 @@ const showRoles = () => {
     });    
 }
 
-const addRole = (title, salary, department) => {
-    const qry = `INSERT INTO roles(title, salary, department_id) values("${title}", ${salary}, ${department})`;
-    console.log(qry);
-    db.query(qry);
+
+const getRoles = async () => {
+    const conn = await mysql.createConnection(
+        {
+          host: 'localhost',
+          user: 'root',
+          password: 'admin',
+          database: 'employees_db'
+        },
+    );
+
+    let [rows, fields] = await conn.execute(query);
+    console.log(rows);
+    return rows;
 }
 
-module.exports = {showRoles, addRole};
+const addRole = (title, salary, department) => {
+    db.query(`INSERT INTO roles(title, salary, department_id) values("${title}", ${salary}, ${department})`);
+}
+
+module.exports = {showRoles, addRole, getRoles};
