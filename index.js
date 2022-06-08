@@ -94,11 +94,12 @@ const getRoleChoices = async () => {
 
 const addEmployeeMenu = async () => {
     
-    let {managerChoices, reverseManagerMap} = getEmployeeChoices();
-    managerChoices.push('No manager');
-    reverseManagerMap['No Manager'] = null;
-
-    let {roleChoices, reverseRoleMap} = getEmployeeChoices();
+    let res = await getEmployeeChoices();
+    let managerChoices = res.choices;
+    let reverseManagerMap = res.reverseMap;
+    res = await getRoleChoices();
+    let roleChoices = res.choices;
+    let reverseRoleMap = res.reverseMap;
 
     const addEmployeeQuestions = [
         {
@@ -134,14 +135,11 @@ const addEmployeeMenu = async () => {
 
 const updateEmployeeMenu = async () => {
     let res = await getEmployeeChoices();
-    employeeChoices = res.choices;
-    reverseEmployeeMap = res.reverseMap;
+    let employeeChoices = res.choices;
+    let reverseEmployeeMap = res.reverseMap;
     res = await getRoleChoices();
-    roleChoices = res.choices;
-    reverseRoleMap = res.reverseMap;
-
-    console.log('employeeChoices:', employeeChoices);
-    console.log('roleChoices:', roleChoices);
+    let roleChoices = res.choices;
+    let reverseRoleMap = res.reverseMap;
 
     const questions = [
         {
@@ -176,13 +174,13 @@ const mainMenu = async () => {
 
     switch(ans.option){
         case "view all departments":
-            department.showDepartments();
+            console.log(await department.getDepartments());
             break;
         case "view all roles":
-            role.showRoles();
+            console.log(await role.getRoles());
             break;
         case "view all employees":
-            employee.showEmployees();
+            console.log(await employee.getEmployeesFull());
             break;
         case "add a department":
             await addDepartmentMenu();
