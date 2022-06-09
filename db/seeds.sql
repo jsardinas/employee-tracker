@@ -4,7 +4,7 @@ insert into department(department_name) values
 
 insert into roles(title, salary, department_id) values
 ('software engineer', 120000, 1),
-('senriot engineer', 160000, 1),
+('senior engineer', 160000, 1),
 ('staff engineer', 200000, 1),
 ('ceo', 300000, 2);
 
