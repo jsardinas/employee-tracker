@@ -4,6 +4,8 @@ const department = require('./department');
 const role = require('./roles');
 const employee = require('./employee');
 
+const cTable = require('console.table');
+
 const mainQuestions = [
     {   
         type:"list",
@@ -33,7 +35,6 @@ const addDepartmentMenu = async () => {
     var ans = await inquirer.prompt(addDepartmentQuestions);
     department.addDepartment(ans.departmentName);
 }
-
 
 const addRoleMenu = async () => {
     let departments = await department.getDepartments();
@@ -174,7 +175,7 @@ const mainMenu = async () => {
 
     switch(ans.option){
         case "view all departments":
-            console.log(await department.getDepartments());
+            console.table(await department.getDepartments());
             break;
         case "view all roles":
             console.log(await role.getRoles());
