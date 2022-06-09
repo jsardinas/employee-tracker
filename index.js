@@ -175,13 +175,16 @@ const mainMenu = async () => {
 
     switch(ans.option){
         case "view all departments":
-            console.table(await department.getDepartments());
+            var res = await department.getDepartments();
+            console.table(res);
             break;
         case "view all roles":
-            console.log(await role.getRoles());
+            var res = await role.getRoles();
+            console.table(res);
             break;
         case "view all employees":
-            console.log(await employee.getEmployeesFull());
+            var res = await employee.getEmployeesFull();
+            console.table(res);
             break;
         case "add a department":
             await addDepartmentMenu();
