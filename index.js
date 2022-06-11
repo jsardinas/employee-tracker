@@ -6,6 +6,8 @@ const employee = require('./employee');
 
 const cTable = require('console.table');
 
+console.log('checkpoint 1');
+
 const mainQuestions = [
     {   
         type:"list",
@@ -167,12 +169,14 @@ const updateEmployeeMenu = async () => {
     employee.updateRole(ans.employee, ans.role);
 }
 
+console.log('checkpoint 2');
+
 var done = false;
 
 const mainMenu = async () => {
-
+    console.log('checkpoint 4');
     var ans = await inquirer.prompt(mainQuestions)
-
+    console.log('ans:', ans);
     switch(ans.option){
         case "view all departments":
             var res = await department.getDepartments();
@@ -211,4 +215,5 @@ const runApp = async () => {
     console.log('Bye!');
 }
 
+console.log('checkpoint 3');
 runApp();
